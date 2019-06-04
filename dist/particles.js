@@ -46,6 +46,7 @@ var Particles = (function(window, document) {
         color: '#000000',
         minDistance: 120,
         connectParticles: false,
+        shape: 'circle'
       };
 
       _.element = null;
@@ -487,7 +488,18 @@ var Particles = (function(window, document) {
     _.context.translate(_.x, _.y);
     _.context.moveTo(0, 0);
     _.context.beginPath();
-    _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
+          // _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
+          console.log(_.shape)
+          switch(_.shape){
+  case 'circle':
+    _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false)
+    break;
+  case 'rect':
+    _.context.fillRect(_.radius, _.radius, _.radius, _.radius);
+    break;
+  default:
+      _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
+}   
     _.context.fillStyle = _.color;
     _.context.fill();
     _.context.restore();
@@ -557,3 +569,5 @@ var Particles = (function(window, document) {
     window.Particles = Particles;
   }
 })();
+
+
