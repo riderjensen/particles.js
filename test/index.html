@@ -30,7 +30,20 @@
         window.onload = function () {
             Particles.init({
                 selector: '.background',
-                shape: 'rect'
+                shape: [
+                    {
+                        x: 15,
+                        y: 10
+                    },
+                    {
+                        x: 20,
+                        y: 15
+                    },
+                    {
+                        x: 20,
+                        y: 5
+                    }
+                ]
             });
         };
     </script>

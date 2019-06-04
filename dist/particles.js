@@ -488,8 +488,16 @@ var Particles = (function(window, document) {
     _.context.translate(_.x, _.y);
     _.context.moveTo(0, 0);
     _.context.beginPath();
-    // _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
-    _.context.fillRect(_.radius, _.radius, _.radius, _.radius);
+    if(_.options.shape === 'sqr') {
+      let rad = _.radius*2;
+      _.context.fillRect(rad, rad, rad, rad)
+    } else if (typeof _.options.shape === 'object') {
+      _.options.shape.forEach(obj => {
+        _.context.lineTo(obj.x, obj.y);
+      })
+    } else {
+      _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false)
+    }
     _.context.fillStyle = _.color;
     _.context.fill();
     _.context.restore();
