@@ -502,14 +502,20 @@ var Particles = (function (window, document) {
       _.context.fill();
     } else if (typeof _.options.shape === 'object') {
       _.options.shape.forEach(obj => {
-        if (obj.param === 'arc') {
+        if(obj.param === 'bezierCurveTo') {
+          _.context.bezierCurveTo(obj.a, obj.b, obj.c, obj.d, obj.e, obj.f, obj.g)
+        } else if (obj.param === 'arc') {
           _.context.arc(obj.a, obj.b, obj.c, obj.d, Math.PI * obj.e, obj.f);
+        } else if (obj.param === 'quadraticCurveTo') {
+          _.context.quadraticCurveTo(obj.a, obj.b, obj.c, obj.d);          
         } else if (obj.param === 'moveTo') {
           _.context.moveTo(obj.a, obj.b);
+        } else if (obj.param === 'stroke') {
+          _.context.stroke();
+        } else {
+          alert(`Unrecognized param: ${obj.param}. Please make sure it is spelled correctly`)
         }
       })
-      _.context.closePath();
-      _.context.stroke();
     } else {
       _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false)
       _.context.fillStyle = _.color;
