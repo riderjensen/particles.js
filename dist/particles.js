@@ -503,7 +503,7 @@ var Particles = (function (window, document) {
     } else if (typeof _.options.shape === 'object') {
       _.options.shape.forEach(obj => {
         if(obj.param === 'bezierCurveTo') {
-          _.context.bezierCurveTo(obj.a, obj.b, obj.c, obj.d, obj.e, obj.f, obj.g)
+          _.context.bezierCurveTo(obj.a, obj.b, obj.c, obj.d, obj.e, obj.f)
         } else if (obj.param === 'arc') {
           _.context.arc(obj.a, obj.b, obj.c, obj.d, Math.PI * obj.e, obj.f);
         } else if (obj.param === 'quadraticCurveTo') {
@@ -512,7 +512,9 @@ var Particles = (function (window, document) {
           _.context.moveTo(obj.a, obj.b);
         } else if (obj.param === 'stroke') {
           _.context.stroke();
-        } else {
+        } else if (obj.param === 'fill') {
+          _.context.fill();
+        }else {
           alert(`Unrecognized param: ${obj.param}. Please make sure it is spelled correctly`)
         }
       })
