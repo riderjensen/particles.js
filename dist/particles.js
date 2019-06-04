@@ -488,18 +488,8 @@ var Particles = (function(window, document) {
     _.context.translate(_.x, _.y);
     _.context.moveTo(0, 0);
     _.context.beginPath();
-          // _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
-          console.log(_.shape)
-          switch(_.shape){
-  case 'circle':
-    _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false)
-    break;
-  case 'rect':
+    // _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
     _.context.fillRect(_.radius, _.radius, _.radius, _.radius);
-    break;
-  default:
-      _.context.arc(0, 0, _.radius, 0, Math.PI * 2, false);
-}   
     _.context.fillStyle = _.color;
     _.context.fill();
     _.context.restore();
