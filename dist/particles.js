@@ -441,12 +441,18 @@ var Particles = (function (window, document) {
    * @return {object}
    */
   Plugin.prototype._hex2rgb = function (hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var result = hex.replace('#', '');
+
+    result = result.match(new RegExp('(.{'+result.length/3+'})', 'g'));
+
+    for(var i = 0; i < result.length; i++) {
+        result[i] = parseInt(result[i].length === 1 ? result[i]+result[i]:result[i], 16);
+    }
 
     return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
+      r: result[0],
+      g: result[1],
+      b: result[2]
     } : null;
   };
 
