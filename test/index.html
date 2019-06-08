@@ -30,9 +30,10 @@
         window.onload = function () {
             Particles.init({
                 selector: '.background',
-                maxParticles: 25,
-                shape: [
-                {
+                maxParticles: 15,
+                connectParticles: true,
+                color: '#ff0000',
+                shape: [{
                         param: 'moveTo',
                         a: 75,
                         b: 40
@@ -91,7 +92,7 @@
                         e: 75,
                         f: 40
                     },
- {
+                    {
                         param: 'fill'
                     }
                 ]

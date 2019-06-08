@@ -513,6 +513,7 @@ var Particles = (function (window, document) {
         } else if (obj.param === 'stroke') {
           _.context.stroke();
         } else if (obj.param === 'fill') {
+          _.context.fillStyle = _.color;
           _.context.fill();
         }else {
           alert(`Unrecognized param: ${obj.param}. Please make sure it is spelled correctly`)
